@@ -5,7 +5,6 @@ let menuItem = document.getElementsByClassName("menu-item"),
     menuNewItem = document.createElement("li"),
     title = document.getElementById("title"),
     adv = document.getElementsByClassName("adv")[0],
-    body = document.getElementsByTagName("body")[0],
     question = document.getElementById("prompt");
 
 menu.insertBefore(menuItem[2], menuItem[1]);
@@ -17,7 +16,7 @@ title.textContent = "Мы продаем только подлинную тех�
 
 adv.remove();
 
-body.style.backgroundImage = "url(img/apple_true.jpg)";
+document.body.style.backgroundImage = "url(img/apple_true.jpg)";
 
 let answer = prompt('Ваше отношение к технике Apple?');
 question.textContent = answer;
