@@ -1,0 +1,23 @@
+let start = document.getElementById("start"),
+    budgetValue = document.getElementsByClassName("budget-value"),
+    dayBudgetValue = document.getElementsByClassName("daybudget-value"),
+    levelValue = document.getElementsByClassName("level-value"),
+    expencesValue = document.getElementsByClassName("expenses-value"),
+    optionalValue = document.getElementsByClassName("optionalexpenses-value"),
+    incomValue = document.getElementsByClassName("income-value"),
+    monthSavingsValue = document.getElementsByClassName("monthsavings-value"),
+    yearSavingsValue = document.getElementsByClassName("yearsavings-value"),
+    expencesItem = document.getElementsByClassName("expenses-item"),
+    expensesBtn = document.getElementsByTagName("button")[0],
+    optionalBtn = document.getElementsByTagName("button")[1],
+    countBtn = document.getElementsByTagName("button")[2],
+    inputOptional = document.querySelectorAll(".optionalexpenses-item"),
+    potentionalIncome = document.querySelector(".choose-income"),
+    savings = document.querySelector("#savings"),
+    chooseSum = document.querySelector(".choose-sum"),
+    choosePersent = document.querySelector(".choose-percent"),
+    year = document.querySelector(".year-value"),
+    month = document.querySelector(".month-value"),
+    day = document.querySelector(".day-value");
+
+
