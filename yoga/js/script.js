@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", function () {
     //tabs
 
-    "use strict";
+     "use strict";
 
     let tab = document.querySelectorAll(".info-header-tab"),
         info = document.querySelector(".info-header"),
@@ -218,4 +218,44 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+
+    //calc
+
+    let people = document.querySelectorAll(".counter-block-input")[0],
+        daysRest = document.querySelectorAll(".counter-block-input")[1],
+        totalValue = document.getElementById("total"),
+        place = document.getElementById("select"),
+        total = 0,
+        personSum = 0,
+        daysSum = 0;
+
+    totalValue.innerHTML = 0;
+
+    people.addEventListener("change", function () {
+        personSum = +this.value;
+        total = (daysSum + personSum) * 4000;
+        if (people.value == "" || daysRest.value == "") {
+            totalValue.innerHTML = 0;
+        } else {
+            totalValue.innerHTML = total;
+        }
+    });
+
+    daysRest.addEventListener("change", function () {
+        daysSum = +this.value;
+        total = (daysSum + personSum) * 4000;
+        if (people.value == "" || daysRest.value == "") {
+            totalValue.innerHTML = 0;
+        } else {
+            totalValue.innerHTML = total;
+        }
+    });
+
+    place.addEventListener("change", function () {
+            if (people.value == "" || daysRest.value == "") {
+                totalValue.innerHTML = 0;
+            } else {
+                let a = total;
+                totalValue.innerHTML = a * this.options[this.selectedIndex].value;
+            }});
 });
