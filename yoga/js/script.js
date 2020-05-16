@@ -134,6 +134,7 @@ window.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         this.appendChild(statusMessage);
 
+        // return new Promise(resolve, reject) {};
         let request = new XMLHttpRequest();
 
         request.open("POST", "server.php");
