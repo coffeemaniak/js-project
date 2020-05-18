@@ -1,3 +1,5 @@
+"use strict";
+
 let numberOfFilms = prompt ("Сколько фильмов вы уже посмотрели?"),
     personalMovieDB = {
         count: numberOfFilms,
@@ -7,10 +9,9 @@ let numberOfFilms = prompt ("Сколько фильмов вы уже посм�
         privat: false,
     };
 
-let a = prompt("Один из просмотренных фильмов?"),
-    b = prompt("На сколько оцените его?"),
-    c = prompt("Один из просмотренных фильмов?"),
-    d = prompt("На сколько оцените его?");
-
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+for (let i = 0; i < 2; i ++) {
+    let a = prompt("Один из просмотренных фильмов?"),
+        b = prompt("На сколько оцените его?");
+    
+    personalMovieDB.movies[a] = b;
+};
