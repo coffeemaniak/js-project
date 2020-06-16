@@ -229,22 +229,21 @@ window.addEventListener("DOMContentLoaded", () => {
             `;
             form.insertAdjacentElement("afterend", statusMessage);
 
-            const request = new XMLHttpRequest();
-            request.open("POST", "server.php");
-
             const formData = new FormData(form);
 
-            request.send(formData);
-
-            request.addEventListener("load", () => {
-                if (request.status === 200) {
-                    console.log("ok!");
-                    showThanksModal(messages.success);
-                    form.reset();
-                    statusMessage.remove();
-                } else {
-                    showThanksModal(messages.failure);
-                }
+            fetch("servet.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(data => data.text())
+            .then(data => {
+                console.log(data);
+                showThanksModal(messages.success);
+                statusMessage.remove();
+            }).catch(() => {
+                showThanksModal(messages.failure);
+            }).finally(() => {
+                form.reset();
             });
         });
     }
