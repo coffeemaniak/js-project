@@ -18,10 +18,11 @@ gulp.task("build-js", () => {
     return gulp.src("./src/js/main.js")
                 .pipe(webpack({
                     mode: 'development',
+                    // entry: './src/js/main.js',
                     output: {
                         filename: 'script.js'
                     },
-                    watch: false,
+                    watch: true,
                     devtool: "source-map",
                     module: {
                         rules: [

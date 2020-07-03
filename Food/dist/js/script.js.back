@@ -1931,6 +1931,41 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./node_modules/webpack/buildin/harmony-module.js":
+/*!*******************************************!*\
+  !*** (webpack)/buildin/harmony-module.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if (!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -1939,13 +1974,13 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 window.addEventListener("DOMContentLoaded", () => {
-  const calc = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js").default,
-        cards = __webpack_require__(/*! ./modules/cards */ "./src/js/modules/cards.js").default,
-        forms = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js").default,
-        modal = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js").default,
-        slides = __webpack_require__(/*! ./modules/slides */ "./src/js/modules/slides.js").default,
-        tabs = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js").default,
-        timer = __webpack_require__(/*! ./modules/timer */ "./src/js/modules/timer.js").default;
+  const calc = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js"),
+        cards = __webpack_require__(/*! ./modules/cards */ "./src/js/modules/cards.js"),
+        forms = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js"),
+        modal = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js"),
+        slides = __webpack_require__(/*! ./modules/slides */ "./src/js/modules/slides.js"),
+        tabs = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js"),
+        timer = __webpack_require__(/*! ./modules/timer */ "./src/js/modules/timer.js");
 
   calc();
   cards();
@@ -1962,11 +1997,9 @@ window.addEventListener("DOMContentLoaded", () => {
 /*!********************************!*\
   !*** ./src/js/modules/calc.js ***!
   \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 function calc() {
   //calc
   const result = document.querySelector(".calculating__result span");
@@ -2075,7 +2108,7 @@ function calc() {
   getDynamicInformation("#age");
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (calc);
+module.exports = calc;
 
 /***/ }),
 
@@ -2083,11 +2116,9 @@ function calc() {
 /*!*********************************!*\
   !*** ./src/js/modules/cards.js ***!
   \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 function cards() {
   //Card 
   class MenuCard {
@@ -2131,7 +2162,7 @@ function cards() {
   new MenuCard("img/tabs/post.jpg", "post", 'Меню "Постное"', 'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.', 430, ".menu .container").render();
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (cards);
+module.exports = cards;
 
 /***/ }),
 
@@ -2139,12 +2170,12 @@ function cards() {
 /*!*********************************!*\
   !*** ./src/js/modules/forms.js ***!
   \*********************************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_promise_finally__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.promise.finally */ "./node_modules/core-js/modules/es.promise.finally.js");
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var core_js_modules_es_promise_finally__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.promise.finally */ "./node_modules/core-js/modules/es.promise.finally.js");
 /* harmony import */ var core_js_modules_es_promise_finally__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_finally__WEBPACK_IMPORTED_MODULE_0__);
 
 
@@ -2208,7 +2239,8 @@ function forms() {
   }
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (forms);
+module.exports = forms;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
 
@@ -2216,11 +2248,9 @@ function forms() {
 /*!*********************************!*\
   !*** ./src/js/modules/modal.js ***!
   \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 function modal() {
   // Modal
   const btnToggle = document.querySelectorAll("[data-modal]"),
@@ -2265,7 +2295,7 @@ function modal() {
   window.addEventListener("scroll", showModalByScroll);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (modal);
+module.exports = modal;
 
 /***/ }),
 
@@ -2273,12 +2303,12 @@ function modal() {
 /*!**********************************!*\
   !*** ./src/js/modules/slides.js ***!
   \**********************************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
 /* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0__);
 
 
@@ -2356,7 +2386,6 @@ function slides() {
   }
 
   function deleteDigits(str) {
-    // return "";
     return +str.replace(/\D/g, "");
   }
 
@@ -2456,7 +2485,8 @@ function slides() {
   // });
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (slides);
+module.exports = slides;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
 
@@ -2464,11 +2494,9 @@ function slides() {
 /*!********************************!*\
   !*** ./src/js/modules/tabs.js ***!
   \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 function tabs() {
   // tabs
   const tabs = document.querySelectorAll(".tabheader__item"),
@@ -2507,7 +2535,7 @@ function tabs() {
   });
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (tabs);
+module.exports = tabs;
 
 /***/ }),
 
@@ -2515,11 +2543,9 @@ function tabs() {
 /*!*********************************!*\
   !*** ./src/js/modules/timer.js ***!
   \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 function timer() {
   //timer
   const deadline = "2020-06-12";
@@ -2572,7 +2598,7 @@ function timer() {
   setClock(".timer", deadline);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (timer);
+module.exports = timer;
 
 /***/ })
 

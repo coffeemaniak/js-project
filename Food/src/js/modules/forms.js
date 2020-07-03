@@ -1,4 +1,4 @@
-function forms() {
+function forms () {
     //Forms
 
     const forms = document.querySelectorAll("form");
@@ -67,4 +67,4 @@ function forms() {
     }
 }
 
-module.exports = forms;
+export default forms;

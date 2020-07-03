@@ -77,6 +77,7 @@ function slides() {
     }
 
     function deleteDigits(str) {
+        // return "";
         return +str.replace(/\D/g, "");
     }
 
@@ -190,4 +191,4 @@ function slides() {
     // });
 }
 
-module.exports = slides;
+export default slides;
