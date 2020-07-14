@@ -1,7 +1,9 @@
-const forms = () => {
+import checkNumInput from "./checkNumInput";
+
+const forms = (state) => {
     const form = document.querySelectorAll("form"),
-          inputs = document.querySelectorAll("input"),
-          phone = document.querySelectorAll("input[name='user_phone']");
+          windows = document.querySelectorAll("[data-modal]"),
+          inputs = document.querySelectorAll("input");
     
     const message = {
         loading: "Загрузка...",
@@ -9,11 +11,7 @@ const forms = () => {
         failure: "Что-то пошло не так..."
     };
 
-    phone.forEach(item => {
-        item.addEventListener("input", () => {
-            item.value = item.value.replace(/\D/, "");
-        });
-    });
+    checkNumInput("input[name='user_phone']");
 
     const clearInputs = () => {
         inputs.forEach(item => {
@@ -41,6 +39,11 @@ const forms = () => {
             item.appendChild(statusMessage);
 
             const formData = new FormData(item);
+            if (item.getAttribute("data-calc") === "end") {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
 
             postData("assets/server.php", formData)
                 .then(res => {
@@ -52,6 +55,10 @@ const forms = () => {
                     clearInputs();
                     setTimeout(() => {
                         statusMessage.remove();
+                        windows.forEach(item => {
+                            item.style.display = "none";
+                            document.body.style.overflow = "";
+                        });
                     }, 10000);
                 });
         });
