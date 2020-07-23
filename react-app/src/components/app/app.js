@@ -12,9 +12,9 @@ import "./app.css";
 const App = () => {
 
     const data = [
-        {label: "Start learning React", important: true},
-        {label: "fucking fuck...", important: false},
-        {label: "i want to leave...", important: false}
+        {label: "Start learning React", important: true, id: "fdsjl"},
+        {label: "fucking fuck...", important: false, id: "druow"},
+        {label: "i want to leave...", important: false, id: "dfids"}
     ]
 
     return (
