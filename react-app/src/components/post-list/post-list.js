@@ -3,7 +3,7 @@ import PostListItem from "../post-list-item";
 import "./post-list.css";
 
 
-const PostList = ({posts}) => {
+const PostList = ({posts, onDelete}) => {
 
     const elements = posts.map((item) => {
 
@@ -14,10 +14,11 @@ const PostList = ({posts}) => {
                 <PostListItem 
                 label={item.label}
                 important={item.important}
+                onDelete={() => onDelete(item.id)}
                 />
             </li>
             )
-            
+
         }
     })
     
