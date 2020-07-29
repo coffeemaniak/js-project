@@ -3,7 +3,7 @@ import PostListItem from "../post-list-item";
 import "./post-list.css";
 
 
-const PostList = ({posts, onDelete}) => {
+const PostList = ({posts, onDelete, onToggliLike, onToggleImportant}) => {
 
     const elements = posts.map((item) => {
 
@@ -15,12 +15,13 @@ const PostList = ({posts, onDelete}) => {
                 label={item.label}
                 important={item.important}
                 onDelete={() => onDelete(item.id)}
+                onToggleImportant={() => onToggleImportant(item.id)}
+                onToggliLike={() => onToggliLike(item.id)}
                 />
             </li>
             )
-
         }
-    })
+    });
     
     function isEmpty(obj) {
         for (let key in obj) {

@@ -14,12 +14,17 @@ export default class App extends Component {
         super(props);
         this.state = {
             data : [
-                {label: "Start learning React", important: true, id: "fdsjl"},
-                {label: "fucking fuck...", important: false, id: "druow"},
-                {label: "i want to leave...", important: false, id: "dfids"}
+                {label: "Start learning React", important: true, id: 1},
+                {label: "fucking fuck...", important: false, id: 2},
+                {label: "i want to leave...", important: false, id: 3}
             ]
         }
+        this.maxId = 4;
         this.deleteItem = this.deleteItem.bind(this);
+        this.addItem = this.addItem.bind(this);
+        this.onToggleImportant = this.onToggleImportant.bind(this);
+        this.onToggliLike = this.onToggliLike.bind(this);
+
     }
     deleteItem (id) {
         this.setState(({data}) => {
@@ -33,6 +38,30 @@ export default class App extends Component {
             }
         })
     }
+
+    addItem(body) {
+        const newItem = {
+            label: body,
+            important: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        })
+    }
+
+    onToggleImportant(id) {
+        console.log(id);
+    }
+
+    onToggliLike(id) {
+        console.log(id);
+    }
+
+
     render() {
         return (
         <div className="app">
@@ -42,9 +71,12 @@ export default class App extends Component {
             <PostStatusFilter/>
         </div>
         <PostList 
-        posts={this.state.data}
-        onDelete={this.deleteItem}/>
-        <PostAddForm/>.
+            posts={this.state.data}
+            onDelete={this.deleteItem}
+            onToggleImportant={this.onToggleImportant}
+            onToggliLike={this.onToggliLike}/>
+        <PostAddForm
+            onAdd={this.addItem}/>.
         </div>
     )
     }
