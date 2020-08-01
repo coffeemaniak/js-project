@@ -18,7 +18,8 @@ export default class App extends Component {
                 {label: "fucking fuck...", important: false,  like: false, id: 2},
                 {label: "i want to leave...", important: false, like: false,  id: 3}
             ],
-            term: ""
+            term: "", 
+            filter: "all"
         }
         this.maxId = 4;
         this.deleteItem = this.deleteItem.bind(this);
@@ -26,6 +27,7 @@ export default class App extends Component {
         this.onToggleImportant = this.onToggleImportant.bind(this);
         this.onToggleLike = this.onToggleLike.bind(this);
         this.onUpdateSearch = this.onUpdateSearch.bind(this);
+        this.onFilterSelect = this.onFilterSelect.bind(this);
 
     }
     deleteItem (id) {
@@ -97,11 +99,23 @@ export default class App extends Component {
         this.setState({term});
     }
 
+    filterPosts(items, filter) {
+        if (filter === "like") {
+            return items.filter(item => item.like);
+        } else {
+            return items;
+        }
+    }
+
+    onFilterSelect(filter) {
+        this.setState({filter});
+    }
+
 
     render() {
         const liked = this.state.data.filter(item => item.like).length;
         const allPost = this.state.data.length;
-        const visiblePosts = this.searchPosts(this.state.data, this.state.term);
+        const visiblePosts = this.filterPosts(this.searchPosts(this.state.data, this.state.term), this.state.filter);
         return (
         <div className="app">
         <Header
@@ -111,7 +125,9 @@ export default class App extends Component {
         <div className="search-panel d-flex">
             <SearchPanel
             onUpdateSearch={this.onUpdateSearch}/>
-            <PostStatusFilter/>
+            <PostStatusFilter
+            filter={this.state.filter}
+            onFilterSelect={this.onFilterSelect}/>
         </div>
         <PostList 
             posts={visiblePosts}
@@ -121,7 +137,6 @@ export default class App extends Component {
         <PostAddForm
             onAdd={this.addItem}/>.
         </div>
-    )
+        )
     }
-    
 }
